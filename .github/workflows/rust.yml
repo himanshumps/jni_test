@@ -12,9 +12,7 @@ jobs:
   build:
     name: deploy
     runs-on: ubuntu-18.04
-    strategy: 
-      matrix:
-        target: [x86_64-unknown-linux-musl]
+    container: openebs/rhel7
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -24,20 +22,19 @@ jobs:
           toolchain: stable
           profile: complete
           override: true
-          target: ${{ matrix.target }}
       - name: Build target
         uses: actions-rs/cargo@v1
         with:
-          use-cross: true
+          use-cross: false
           command: build
           args: --release --target ${{ matrix.target }}
 
       - name: Package
         shell: bash
         run: |
-          ls -altr target/${{ matrix.target }}/release
-          cd target/${{ matrix.target }}/release          
-          tar czvf ../../../jni_test-${{ matrix.target }}.tar.gz *
+          ls -altr target/release
+          cd target/release          
+          tar czvf ../../jni_test-${{ matrix.target }}.tar.gz *
           cd -
       - name: Set UUID
         id: generate-uuid
