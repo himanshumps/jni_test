@@ -2,7 +2,8 @@ name: Rust
 
 on:
   workflow_dispatch:
-
+permissions:
+  contents: write
 env:
   LANG: en_US.UTF-8
 jobs:
