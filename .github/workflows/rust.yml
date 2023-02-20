@@ -34,7 +34,7 @@ jobs:
         run: |
           ls -altr target/${{ matrix.target }}/release
           cd target/${{ matrix.target }}/release          
-          tar czvf ../../../jni_test-${{ matrix.target }}.tar.gz jni_test
+          tar czvf ../../../jni_test-${{ matrix.target }}.tar.gz *
           cd -
       - name: Publish
         uses: softprops/action-gh-release@v1
