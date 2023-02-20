@@ -20,6 +20,7 @@ jobs:
           toolchain: stable
           profile: complete
           override: true
+          target: stable-x86_64-unknown-linux-gnu
       - name: Build target
         uses: actions-rs/cargo@v1
         with:
