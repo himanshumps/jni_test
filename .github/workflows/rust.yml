@@ -18,7 +18,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-          profile: complete
+          profile: minimal
           override: true
           target: stable-x86_64-unknown-linux-gnu
       - name: Build target
@@ -26,7 +26,7 @@ jobs:
         with:
           use-cross: false
           command: build
-          args: --release --target ${{ matrix.target }}
+          args: --release
 
       - name: Package
         shell: bash
