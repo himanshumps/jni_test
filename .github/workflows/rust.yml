@@ -40,6 +40,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         # TODO: if any of the build step fails, the release should be deleted.
         with:
+            tag_name: ${{ gihub.sha }}
             files: 'jni_test*'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
