@@ -6,13 +6,11 @@ permissions:
   contents: write
 env:
   LANG: en_US.UTF-8
-  CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER: rust-lld
-  RUSTFLAGS: -C target-feature=-crt-static
 jobs:
   build:
     name: deploy
     runs-on: ubuntu-18.04
-    container: openebs/rhel7
+    container: himanshumps/ubi7_container
     steps:
       - name: Checkout
         uses: actions/checkout@v1
