@@ -14,19 +14,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install rust
-        uses: actions-rs/toolchain@v1
+      - uses: himanshumps/rust-musl-action@master
         with:
-          toolchain: stable
-          profile: minimal
-          override: true
-          target: stable-x86_64-unknown-linux-gnu
-      - name: Build target
-        uses: actions-rs/cargo@v1
-        with:
-          use-cross: false
-          command: build
-          args: --release
+          args: cargo +stable build --release
 
       - name: Package
         shell: bash
